@@ -1,3 +1,4 @@
+using JoresDuona.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -18,10 +19,15 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-app.UseRouting(); 
-app.UseAuthorization(); 
+app.UseRouting();
+app.UseAuthorization();
 
-app.MapControllers(); 
+app.MapControllers();
+
+/* For future use
+using IServiceScope scope = app.Services.CreateScope();
+UserSessionService userService = scope.ServiceProvider.GetRequiredService<UserSessionService>();
+*/
 
 app.MapDefaultControllerRoute();
 
